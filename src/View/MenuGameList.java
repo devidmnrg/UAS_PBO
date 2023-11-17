@@ -5,7 +5,6 @@ import Model.Users;
 import Model.Games;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,7 +16,7 @@ import javax.swing.JTextField;
  *
  * @author Devid L Manurung
  */
-public class MenuGameList {
+public class MenuGameList extends JFrame {
 
     public MenuGameList(Users loggedInUser) {
         Controller control = new Controller();
@@ -94,8 +93,9 @@ public class MenuGameList {
         });
     }
 
-    void setVisible(boolean b) {
+    public void setVisible(boolean b) {
 
     }
+   
 
 }

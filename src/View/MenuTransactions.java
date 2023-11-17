@@ -1,4 +1,3 @@
-
 package View;
 
 import java.awt.event.ActionEvent;
@@ -9,6 +8,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import Controller.Controller;
 import Model.Transactions;
+import Model.Users;
 
 
 public class MenuTransactions {
@@ -16,6 +16,8 @@ public class MenuTransactions {
     public MenuTransactions(int id) {
         showTransaction(id);
     }
+
+
 
     private void showTransaction(int id) {
         JFrame f = new JFrame("Transactions");
@@ -64,7 +66,9 @@ public class MenuTransactions {
         f.add(backButton);
         f.add(new JScrollPane(table));
         f.setVisible(true);
+        
 
     }
+    
 
 }

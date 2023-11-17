@@ -18,25 +18,33 @@ public class Controller {
     static DatabaseHandler conn = new DatabaseHandler();
 
     public Users getUser(String email, String password) {
-        conn.connect();
-        String query = "SELECT * FROM users WHERE email ='" + email + "'&&Password='" + password + "'";
-        Users person = new Users();
+    conn.connect();
+    String query = "SELECT * FROM users WHERE email = ? AND password = ?";
+    Users user = new Users();
 
-        try {
-            Statement stmt = conn.con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                person.setId(rs.getInt("id"));
-                person.setName(rs.getString("name"));
-                person.setEmail(rs.getString("email"));
-                person.setPassword(rs.getString("password"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    try {
+        PreparedStatement preparedStatement = conn.con.prepareStatement(query);
+        preparedStatement.setString(1, email);
+        preparedStatement.setString(2, password);
+
+        ResultSet rs = preparedStatement.executeQuery();
+
+        if (rs.next()) {
+            user.setId(rs.getInt("id"));
+            user.setName(rs.getString("name"));
+            user.setEmail(rs.getString("email"));
+            user.setPassword(rs.getString("password"));
+            // Assuming the Transactions list is managed separately
+            user.setListTransactions(new ArrayList<>());
         }
-        conn.disconnect();
-        return (person);
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+
+    conn.disconnect();
+    return user;
+}
+
 
     public ArrayList<Games> getAllGames(int userId) {
         ArrayList<Games> game = new ArrayList<>();

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package View;
 
 import Controller.Controller;
@@ -62,15 +58,11 @@ public class MenuLogin {
                 String userEmail = email.getText();
                 String userPassword = new String(passwordField.getPassword());
                 Users loggedInUser = control.getUser(userEmail, userPassword);
+                
                 if (loggedInUser.getId() != 0) {
-                    // Jika ada pengguna yang cocok, tampilkan halaman utama
-                    jframe.dispose();
-                    MenuGameList menuGameList = new MenuGameList(loggedInUser);
-                    menuGameList.setVisible(true);
                     JOptionPane.showMessageDialog(null, "Login Berhasil!");
-                    
+                    new MenuGameList(loggedInUser);
                 } else {
-                    // Jika tidak cocok, tampilkan pesan kesalahan
                     JOptionPane.showMessageDialog(null, "Gagal untuk login. Email atau password salah.");
                 }
             }
