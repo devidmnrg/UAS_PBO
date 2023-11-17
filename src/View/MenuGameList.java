@@ -21,7 +21,7 @@ public class MenuGameList extends JFrame {
     public MenuGameList(Users loggedInUser) {
         Controller control = new Controller();
         JFrame jframe = new JFrame();
-        jframe.setTitle("Menu Registrasi");
+        jframe.setTitle("Menu Game");
         jframe.setSize(500, 550);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.setLayout(null);
@@ -97,5 +97,5 @@ public class MenuGameList extends JFrame {
 
     }
    
-
+    
 }
